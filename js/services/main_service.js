@@ -4,7 +4,7 @@ angular.module('InstaPaisaApp')
 .factory('MainService', ['$http', function($http){
 
     delete $http.defaults.headers.common["X-Requested-With"];
-    var domainUrl = 'http://backend.localhost';
+    var domainUrl = 'http://api.instapaisa.com';
 
     var obj = {};
 

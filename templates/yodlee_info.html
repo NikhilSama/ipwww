@@ -1,0 +1,85 @@
+<style>
+    ul#stepForm, ul#stepForm li {
+        margin: 0;
+        padding: 0;
+    }
+    ul#stepForm li {
+        list-style: none outside none;
+    } 
+    label{margin-top: 10px;}
+    .help-inline-error{background-color:red;}
+</style>
+<div class="container mainbody">
+    <div class="clearfix"></div>
+    <div class="container" style="padding-left: 0px; padding-right: 15px;">
+        <div class=" panel-primary">
+            <div class="panel-body">
+                <form name="basicform" id="basicform">
+                    <div id="sf3" class="frm">
+                        <fieldset>
+                            <legend>Step 4 of 5</legend>
+
+                            <div class="col-md-3 col-sm-3 col-xs-0"></div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 loanform">
+                                <div class="row greenstrip">
+                                    <div class="col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 text-center sec1">Approved</div>
+                                        <div class="col-md-2 col-sm-2 col-xs-12 text-center sec1"><span class="rateOfInterest"></span>%</div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 text-center sec1">Interest rate</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <h5>Link your bank A/c</h5>
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <a class="btn btn-primary btn-lg btn-block" ng-click="moveNext()">Next</a>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <a class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#skipYodlee" id="skipYodleeLink">Skip</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-0"></div>
+
+                            <!-- thanks modal -->
+                            <div class="modal fade" id="skipYodlee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  
+                                  <div class="modal-body">
+                                    <h3 class="text-center">Thank you</h3>
+                                    <hr>
+                                    <p class="text-center">Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+
+                                    <p class="text-center">Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">No</button>
+                                    <button type="button" class="btn btn-primary btn-lg" ng-click="moveNext()">Yes</button>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+       $('.modal-backdrop').removeClass('in');
+       $('.modal-backdrop').addClass('out');
+       $('.modal-backdrop').addClass('hide');
+    });
+</script>

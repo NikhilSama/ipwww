@@ -1,0 +1,218 @@
+<div class="col-md-8 col-sm-8 col-xs-12 left_container">
+    <h3>Making Credit</h3>
+    <h2>Quick | Easy | Affordable</h2>
+    <p class="lead">Traditional banks borrow money at low interest rates and lend at high rates - with paperwork and time to process each loan.</p>
+    <p class="lead">InstaPaisa cuts out the Banking middleman to bring you personal loans that are: </p>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12 sections_x">
+            <div class="tile">
+                <img src="img/clocks.svg" alt="quick" class="tile-image big-illustration">
+                <h3 class="tile-title">Quick</h3>
+                <p>Money in your bank today</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12 sections_x">
+            <div class="tile">
+                <img src="img/easy.png" alt="easy" class="tile-image big-illustration">
+                <h3 class="tile-title">Easy</h3>
+                <p>All online, no bank visits</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12 sections_x">
+            <div class="tile">
+                <img src="img/emi.jpg" alt="best" class="tile-image big-illustration">
+                <h3 class="tile-title">Lowest EMI</h3>
+                <p> Lowest Interest Rates/EMI's </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-4 col-xs-12 right_container">    
+    <div class="login-form">
+        <h3>Start Here</h3>
+        <p>Approval in 10 minutes or less.  Money in the bank today.</p>
+        <form id="leadForm">
+            <div class="form-group">
+                <input type="hidden" id="id" name="id" class="lead_id" ng-model="lead.id">
+                <input type="text" class="form-control login-field" placeholder="Enter your name" id="name" name="name" ng-model="lead.name">
+                <label class="login-field-icon fui-user" for="name"></label>
+            </div>
+
+            <div class="form-group phone">
+                <input type="text" class="form-control login-field phoneInput" placeholder="Phone" id="phone" name="phone" ng-model="lead.phone">
+                <label class="login-field-icon fa fa-phone" for="phone"></label>
+            </div>
+
+            <div class="form-group otp hide">
+                <input type="text" class="form-control login-field" placeholder="OTP Code " id="otp" name="otp" ng-model="lead.otp">
+                <span for="otp" generated="true" class="help-inline-error">Please enter the OTP Code we just sent to your mobile phone via SMS.</span><label class="login-field-icon fa fa-lock" for="otp"></label>
+            </div>
+
+<!--             <div class="form-group">
+                <input type="text" class="form-control login-field" placeholder="Enter your email" id="email" name="email" ng-model="lead.email">
+                <label class="login-field-icon fui-mail" for="email"></label>
+            </div>
+ -->
+<!--             <div class="col-md-6 col-sm-4 col-xs-6">
+                <label class="radio">
+                    <input type="radio" name="gender" id="optionsRadios1" value="male" data-toggle="radio" class="gender custom-radio" ng-model="lead.gender"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                    Male
+                </label>
+            </div>
+
+            <div class="col-md-6 col-sm-4 col-xs-6">
+                <label class="radio">
+                    <input type="radio" name="gender" id="optionsRadios1" value="female" data-toggle="radio" class="gender custom-radio" ng-model="lead.gender"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                    Female
+                </label>
+            </div>
+ -->
+            <!-- <button type="button" class="btn btn-success">Next</button> -->
+            <div class="clearfix"></div>
+            <a class="btn btn-primary btn-lg btn-block hide" href="#" id="verifyOtp">Verify OTP</a>
+            <a class="btn btn-primary btn-lg btn-block" href="#" id="applyLoanLeadNext">NEXT></a>
+            <a class="btn btn-primary btn-lg btn-block hide" ng-click="leadCreate(lead)" id="applyLoanLead">NEXT></a>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#leadForm').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 3,
+                maxlength: 50,
+            },
+            email: {
+                // required: true,
+                minlength: 5,
+                email: true,
+                maxlength: 50,
+            },
+            phone: {
+                required: true,
+                minlength: 10,
+                number: true,
+                maxlength: 12,
+            },
+            otp: {
+                required: true,
+                number: true,
+                minlength: 4,
+                maxlength: 4,
+            },
+            // gender: {
+            //     // required: true
+            // }
+        },
+        messages: {
+            otp: {
+                required: "Please enter the OTP Code we just sent to your mobile phone via SMS.",
+            }
+        },
+        errorElement: "span",
+        errorClass: "help-inline-error",
+    });
+
+    // $(document.body).on("click", "#applyLoanLead", function(event) {
+    //     event.preventDefault();
+    //     var form = $('#leadForm');
+
+    //     if(form.valid()) {
+    //         // window.location.href = "step_2";
+    //         $('.step_1').trigger('click');
+    //     }
+    // });
+
+    var domainUrl = 'http://backend.localhost';
+    $( ".phoneInput" ).focusout(function(event) {
+        event.preventDefault();
+        var form = $('#leadForm');
+
+        if($(this).valid()) {
+            $.ajax({
+                type: "POST",
+                url: domainUrl + '/leads/create.json',
+                data: form.serialize(),
+                success: function(response) {
+                    if(response.result.success) {
+                        alert('Your otp is : ' + response.result.otp);
+                        $.cookie('lead_id', response.result.id);
+                        $('.lead_id').val(response.result.id);
+                        $('.phone').addClass('hide');
+                        $('.otp').removeClass('hide');
+                        $('#verifyOtp').removeClass('hide');
+                        $('#applyLoanLeadNext').addClass('hide');
+                    } else {
+
+                    }
+                }
+            });
+        }
+    });
+
+    $(document.body).on("click", "#verifyOtp", function(event) {
+        event.preventDefault();
+        var form = $('#leadForm');
+
+        if(form.valid()) {
+            $.ajax({
+                type: "POST",
+                url: domainUrl + '/leads/verify_otp.json',
+                data: form.serialize(),
+                success: function(response) {
+                    if(response.result.success) {
+                        $('.gender').addClass('required');
+                        $('#applyLoanLead').attr('disabled', false);
+                        $('.phone').removeClass('hide');
+                        $('.otp').addClass('hide');
+                        $('#applyLoanLead').trigger('click');
+                    } else {
+                        alert("OTP doens't match");
+                    }
+                }
+            });
+        }
+    });
+    
+
+    // $(document.body).on("click", "#applyLoanLead", function(event) {
+    //     event.preventDefault();
+
+    //     if(form.valid()) {
+    //         $.ajax({
+    //             type: "POST",
+    //             url: form.attr("action"),
+    //             data: form.serialize(),
+    //             success: function(resHtml){
+    //                 $("#modelBoxLink").trigger('click');
+    //             }
+    //         });
+    //     }
+    // });
+</script>
+
+
+
+<!-- <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" ng-model="formData.name">
+</div>
+
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" name="email" ng-model="formData.email">
+</div>
+
+<div class="form-group row">
+<div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="form.interests" class="btn btn-block btn-info">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div> -->

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html ng-app="InstaPaisaApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+        <title>InstaPaisa</title>
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Making Loans Quick, Easy & Affordable. Traditional banks borrow money at low interest rates <br>and lend at high rates. InstaPaisa cuts out the Banking middleman <br>to bring you personal loans.">
+
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57x57.png">
+
+        <!-- CSS Files-->
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/flat-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="lib/chosen/chosen.min.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/popbox.css">
+
+        <!-- JS Files-->
+        <script src="lib/bootstrap/js/jquery-1.11.1.min.js"></script>
+        <script src="lib/jquery.validate.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.js"></script>
+        <script src="lib/chosen/chosen.jquery.min.js"></script>
+        <script src="lib/jquery.cookie.js"></script>
+
+        <!--Libarry Files-->
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-animate.min.js"></script>
+        <script src="lib/angular/angular-ui-router.min.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+        <script src="lib/angular/angular-cookies.min.js"></script>
+        <script src="lib/angular/angular-facebook.js"></script>
+        <script src="lib/angular/satellizer.min.js"></script>
+        <script src="lib/angular/angular-linkedin.js"></script>
+        
+        <!--App Files-->
+        <script src="js/app.js"></script>
+
+        <!--Services Files-->
+        <script src="js/services/main_service.js"></script>
+        
+        <!--Controller Files-->
+        <script src="js/controllers/app_controller.js"></script>
+        <script src="js/controllers/homes_controller.js"></script>
+        <script src="js/controllers/loan_infos_controller.js"></script>
+        <script src="js/controllers/pan_infos_controller.js"></script>
+        <script src="js/controllers/social_infos_controller.js"></script>
+        <script src="js/controllers/yodlee_controller.js"></script>    
+        <script src="js/controllers/thanks_controller.js"></script>
+        
+        <!--Directives Files-->
+
+
+        <script type="text/javascript">
+            $.cookie.defaults = {expires: 365, path: '/'};
+        </script>
+    </head>
+
+    <body>
+        <div class="loader hidden">
+            <img src="img/loader.gif">
+            <h3 class="loadingMessage">Evaluating Application...</h3>
+        </div>
+
+        <div class="container" ng-controller="AppController">
+            <!-- Inner Section Start -->
+            <!-- <div ng-view></div> -->
+            <div ui-view></div>
+            <!-- Inner Section End -->
+        </div>
+
+        <!--PhoneGap-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>

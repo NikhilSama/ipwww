@@ -1,0 +1,345 @@
+<style>
+    ul#stepForm, ul#stepForm li {
+        margin: 0;
+        padding: 0;
+    }
+    ul#stepForm li {
+        list-style: none outside none;
+    } 
+    label{margin-top: 10px;}
+    .help-inline-error{background-color:red;}
+</style>
+<div class="container mainbody">
+    <div class="clearfix"></div>
+    <div class="container" style="padding-left: 0px; padding-right: 15px;">
+        <div class=" panel-primary">
+            <div class="panel-body">
+                <form name="basicform" id="basicform">
+                    <div id="sf1" class="frm">
+                        <fieldset>
+                            <legend>Step 1 of 5</legend>
+                            <div class="container">
+                                <div class="col-md-3 col-sm-3 col-xs-0"></div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 loanform">
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <h6> <small>First Name</small></h6>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control login-field" placeholder="" id="firstName" name="firstName" ng-model="loan_info.firstName">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 col-sm-6 col-xs-6 pr-0">
+                                            <h6> <small>Last Name</small></h6>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control login-field" placeholder="" id="lastName" name="lastName" ng-model="loan_info.lastName">
+                                            </div>
+                                        </div>                                    
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <h6> <small>Email</small></h6>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control login-field" placeholder="" id="firstName" name="email" ng-model="loan_info.email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>How much do you want to borrow ?</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="range range-success">
+                                                <input class="hide" type="number" ng-model="loan_info.amount"/>
+                                                <input type="range" name="amount" id="amount" min="20000" max="600000" onchange="rangeSuccess.value=value" value="20000" step="1000" ng-model="loan_info.amount">
+                                                <output id="rangeSuccess">20000</output>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>For how long ?</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="range range-success">
+                                                <input class="hide" type="number" ng-model="loan_info.tenure"/>
+                                                <input type="range" name="tenure" id="tenure" min="1" max="5" onchange="tenureSuccess.value=value" value="1" ng-model="loan_info.tenure">
+                                                <output id="tenureSuccess">1</output>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <h6><small>Why do you need the money ?</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="form-group">
+                                                <select class="select2-container form-control select select-primary" data-toggle="select" name="purpose" id="purpose" ng-model="loan_info.loanpurpose_id">
+                                                    <option value="" selected>Loan Purpose</option>
+                                                    <option ng-repeat="loanpurpose in loanPurposes" value="{{loanpurpose.id}}">{{ loanpurpose.name }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>What is your Monthly Gross Salary ?</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="range range-success">
+                                                <input class="hide" type="number" ng-model="loan_info.salary"/>
+                                                <input type="range" name="salary" id="salary" min="10000" max="500000" onchange="salarySuccess.value=value" value="10000" step="1000" ng-model="loan_info.salary">
+                                                <output id="salarySuccess">10000</output>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>Where do you work ?</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="form-group">
+                                                <!-- <select class="form-control select select-primary chosen-select" data-toggle="select" name="company" id="company"> -->
+                                                <select class="form-control select select-primary" data-toggle="select" name="company" id="company" ng-model="loan_info.companies_id">
+                                                    <option value="" selected> Select Company</option>
+                                                    <option ng-repeat="companyData in companies" value="{{companyData.id}}">{{ companyData.name }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>Total Current EMI</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="range range-success">
+                                                <input class="hide" type="number" ng-model="loan_info.currentemi"/>
+                                                <input type="range" name="currentemi" id="currentemi" min="0" max="500000" onchange="currentemiSuccess.value=value" value="0" step="1000" ng-model="loan_info.currentemi">
+                                                <output id="currentemiSuccess">20000</output>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>What is your home Pin Code ?</small></h6>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control login-field" value="" placeholder="" id="picode" name="pincode" maxlength="6" ng-model="loan_info.pincode">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h6> <small>Do you Rent or Own your home ?</small></h6>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 housetype">
+                                            <label class="radio">
+                                                <input type="radio" name="houseType" value="rented" data-toggle="radio" class="custom-radio" ng-model="loan_info.houseType"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                                                Rented
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-6 housetype">
+                                            <label class="radio">
+                                                <input type="radio" name="houseType" value="selfowned" data-toggle="radio" class="custom-radio" ng-model="loan_info.houseType"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                                                self owned
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                            <a ng-click="leadLoanInfo(loan_info)" class="btn btn-block btn-lg btn-success open1">Get Approved <span class="fa fa-arrow-right"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-0"></div>
+                            </div>
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <!-- <div class="form-group">
+                              <div class="col-lg-10 col-lg-offset-2">
+                                <button class="btn btn-primary open1" type="button">Next <span class="fa fa-arrow-right"></span></button> 
+                              </div>
+                            </div> -->
+                        </fieldset>
+                    </div>
+
+                    <div id="sf3" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend>Step 3 of 3</legend>
+
+                            <div class="col-md-3 col-sm-3 col-xs-0"></div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 loanform">
+                                <div class="row greenstrip">
+                                    <div class="col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 text-center sec1">Approved</div>
+                                        <div class="col-md-2 col-sm-2 col-xs-12 text-center sec1"><span class="rateOfInterest"></span>%</div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 text-center sec1">Interest rate</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <h5>Link your bank A/c</h5>
+                                    <ul>
+                                        <li>Bank details</li>
+                                        <li>Linkedin</li>
+                                        <li>FB Profile</li>
+                                    </ul>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 p0">
+                                        <button  type="button" class="btn btn-block btn-lg btn-success open3">Submit <span class="fa fa-arrow-right"></span>
+                                            <img src="img/spinner.gif" alt="" id="loader" style="display: none">
+                                        </button>
+                                        
+                                        <!-- <button class="btn btn-warning back2" type="button"><span class="fa fa-arrow-left"></span> Back</button>  -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-0"></div>
+                            <!-- <div class="form-group">
+                              <div class="col-lg-10 col-lg-offset-2">
+                                <button class="btn btn-warning back3" type="button"><span class="fa fa-arrow-left"></span> Back</button> 
+                                
+
+                                <button class="btn btn-primary open3" type="button">Submit </button> 
+                                <img src="spinner.gif" alt="" id="loader" style="display: none">
+                              </div>
+                            </div> -->
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery().ready(function() {
+        $(".chosen-select").chosen();
+        jQuery.validator.addMethod("pan", function(value, element) {
+          // allow any non-whitespace characters as the host part
+          return this.optional( element ) || /[A-Za-z]{5}\d{4}[A-Za-z]{1}/.test( value );
+        }, 'Please enter a valid PAN card no.');
+        // validate form on keyup and submit
+        var v = jQuery("#basicform").validate({
+            rules: {
+                amount: {
+                    required: true,
+                    range: [20000, 600000]
+                },
+                tenure: {
+                    required: true,
+                    range: [1, 5]
+                },
+                salary: {
+                    required: true,
+                    range: [10000, 500000]
+                },
+                company: {
+                    required: true,
+                },
+                currentemi: {
+                    range: [10000, 500000]
+                },
+                purpose: {
+                    required: true
+                },
+                pincode: {
+                    required: true,
+                    minlength: 6,
+                    number: true
+                },
+                houseType: {
+                    required: true
+                },
+                pan: {
+                    required: true,
+                    pan: true
+                }
+            },
+            errorElement: "span",
+            errorClass: "help-inline-error",
+        });
+
+        function showLoader(time) {
+            $('.loader').removeClass('hidden');
+            setTimeout(hideLoader, time);  // 5 seconds
+        }
+
+        function showLoader_1() {
+            $('.loadingMessage').text('Connecting to CIBIL servers.....');
+            $('.loader').removeClass('hidden');
+            setTimeout(showLoader_2, 3000);  // 5 seconds
+        }
+
+        function showLoader_2() {
+            $('.loadingMessage').text('Connected to CIBIL servers & fetching data.....');
+            setTimeout(showLoader_3, 3000);  // 5 seconds
+        }
+
+        function showLoader_3() {
+            $('.loadingMessage').text('Evaluating Data...');
+            setTimeout(hideLoader, 3000);  // 5 seconds
+        }
+
+        function hideLoader() {
+            $('.loader').addClass('hidden');
+        }
+
+        // $(".open1").click(function() {
+        //     if (v.form()) {
+        //         showLoader(5000);
+        //         var form = $("#basicform");
+        //         $.ajax({
+        //             type: "POST",
+        //             url: form.attr("action"),
+        //             data: form.serialize(),
+        //             success: function(result) {
+        //                 if(result.result.max_loan_amount > 0) {
+        //                     $('.maxLoanAmount').text(result.result.max_loan_amount);
+        //                     $('.rateOfInterest').text(result.result.rate);
+        //                     $('.loanTenure').text(result.result.tenure);    
+        //                 } else {
+        //                     $('.greenstrip').addClass('hidden');
+        //                     $('.redstrip').removeClass('hidden');
+        //                     $('#cibilVerBtn').attr('disabled', 'disabled');
+        //                 }
+
+        //                 $(".frm").hide("fast");
+        //                 $("#sf2").show("slow");
+        //             }
+        //         });
+        //     }
+        // });
+
+        $(".open2").click(function() {
+            if (v.form()) {
+                showLoader_1();
+
+                $(".frm").hide("fast");
+                $("#sf3").show("slow");
+            }
+        });
+
+        $(".open3").click(function() {
+            if (v.form()) {
+                $("#loader").show();
+                setTimeout(function(){
+                    $("#basicform").html('<h2 class="thanks_msg">Thanks for your time.</h2>');
+                }, 1000);
+                return false;
+            }
+        });
+
+        $(".back2").click(function() {
+            $(".frm").hide("fast");
+            $("#sf1").show("slow");
+        });
+
+        $(".back3").click(function() {
+            $(".frm").hide("fast");
+            $("#sf2").show("slow");
+        });
+    });
+</script>

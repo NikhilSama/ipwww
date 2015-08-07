@@ -1,0 +1,94 @@
+<style>
+    ul#stepForm, ul#stepForm li {
+        margin: 0;
+        padding: 0;
+    }
+    ul#stepForm li {
+        list-style: none outside none;
+    } 
+    label{margin-top: 10px;}
+    .help-inline-error{background-color:red;}
+</style>
+<div class="container mainbody">
+    <div class="clearfix"></div>
+    <div class="container" style="padding-left: 0px; padding-right: 15px;">
+        <div class=" panel-primary">
+            <div class="panel-body">
+                <form name="basicform" id="basicform">
+                    <div id="sf3" class="frm">
+                        <fieldset>
+                            <legend>Step 3 of 5</legend>
+
+                            <div class="col-md-3 col-sm-3 col-xs-0"></div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 loanform">
+                                <div class="row greenstrip">
+                                    <div class="col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 text-center sec1">Approved</div>
+                                        <div class="col-md-2 col-sm-2 col-xs-12 text-center sec1"><span class="rateOfInterest"></span>%</div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 text-center sec1">Interest rate</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <h5>Link your bank A/c</h5>
+                                    <ul>
+                                        <li class="cursor" ng-click="IntentLogin()">FB Profile</li>
+                                        <li class="cursor" ng-click="linkedInLogin()">LinkedIn</li>
+                                        <li class="cursor">Twitter</li>
+
+<!--                                         <li class="cursor" ng-click="authenticate('facebook')">FB Profile</li>
+                                        <li class="cursor" ng-click="authenticate('linkedin')">Linkedin</li>
+                                        <li class="cursor" ng-click="authenticate('twitter')">Twitter</li> -->
+                                    </ul>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <a class="btn btn-primary btn-lg btn-block" ng-click="moveNext()">Next</a>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <a class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#skipSocial" id="skipSocialLink">Skip</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-0"></div>
+                            
+                            <!-- thanks modal -->
+                            <div class="modal fade" id="skipSocial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  
+                                  <div class="modal-body">
+                                    <h3 class="text-center">Danger Zone: <br>Are You Sure You Want to Skip ?</h3>
+                                    <hr>
+                                    <p class="text-center">We use the data we collect to deeply (but quickly) understand your profile, so that we can offer you the best possible interest rates/EMI on your loan.</p>
+
+                                    <p class="text-center">If you skip critical sections, like this one, then you may not get the lowest possible interest rates, and may pay a higher EMI than you could have otherwise gotten.  Depending on the completeness of rest of your profile, your loan can even be rejected due to lack of data provided. </p>
+                                    <p class="text-center">Are you sure you want to skip the rest of this section ? </p>
+                                </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">No</button>
+                                    <button type="button" class="btn btn-primary btn-lg" ng-click="moveNext()">Yes</button>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery().ready(function() {
+        
+
+        
+    });
+</script>
